@@ -1,0 +1,42 @@
+﻿@using TRLogicTask.Models
+@model LoginViewModel
+
+<div class="form">
+    
+    <div class="tab-container">
+        <a class="tab active" href="/Account/Login" id="loginLink"><div class="fa" id="auth">Авторизация</div></a>
+        <a class="tab" href="/Account/Register" id="registerLink"><div class="fa" id="reg">Регистрация</div></a>
+    </div>
+
+
+    <form method="post" asp-action="Login" asp-controller="Account" asp-antiforgery="true" asp-items="ViewBag.ReturnUrl" class="tab-form active">
+        @Html.AntiForgeryToken()
+
+        <div class="place-holder">
+            <input class="input" type="text" id="UserName" name="UserName" asp-for="UserName" required>
+            <label>введите логин</label>
+            @Html.ValidationMessageFor(m => m.UserName, "")
+        </div>
+
+        <div class="place-holder">
+            <input class="input" type="password" id="Password" name="Password" required>
+            <label>введите пароль</label>
+            @Html.ValidationMessageFor(m => m.Password, "")
+        </div>
+
+        <div class="condition">
+            <input type="checkbox" id="remember">
+            <div class="fa "></div>
+            <label for="remember">Запомнить меня.</label>
+        </div>
+
+        <button type="submit" class="button">Войти</button>
+        <a class="link" href="/Account/ForgotPassword">Восстановить пароль</a>
+
+    </form>
+    <section id="socialLoginForm">
+        @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+    </section>
+    </div>
+    
+

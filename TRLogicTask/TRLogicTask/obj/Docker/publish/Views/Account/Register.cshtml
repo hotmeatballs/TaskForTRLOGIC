@@ -1,0 +1,46 @@
+﻿
+@model TRLogicTask.Models.RegisterViewModel
+
+<div class="form">
+    <div class="tab-container">
+        <a class="tab " href="/Account/Login" id="loginLink"><div class="fa" id="auth">Авторизация</div></a>
+        <a class="tab active" href="/Account/Register" id="registerLink"><div class="fa" id="reg">Регистрация</div></a>
+    </div>
+
+    <form method="post" asp-action="Register" asp-controller="Account" asp-antiforgery="true" asp-items="ViewBag.ReturnUrl" class="tab-form active" role="form">
+        @Html.AntiForgeryToken()
+
+        <div class="place-holder">
+            <input class="input" type="text" id="Email" name="Email" asp-for="Email" required>
+            <label>введите e-mail</label>
+            @Html.ValidationMessageFor(m => m.Email,"")
+            
+        </div>
+
+        <div class="place-holder">
+            <input class="input" type="text" id="UserName" name="UserName" required>
+            <label>введите логин</label>  
+            @Html.ValidationMessageFor(m => m.UserName,"")
+        </div>
+        
+        <div class="place-holder">
+            <input class="input" type="password" id="Password" name="Password" required>
+            <label>введите пароль</label>
+            @Html.ValidationMessageFor(m => m.Password, "")
+        </div>
+
+        <div class="place-holder">
+
+            <input class="input" type="password" id="ConfirmPassword" name="ConfirmPassword" data-val="true" data-val-equalto="Пароль и его подтверждение не совпадают." data-val-equalto-other="*.Password" required>
+            <label>повторите пароль</label>
+            @Html.ValidationMessageFor(m => m.Password, "")
+        </div>
+
+        <div class="condition">
+            <input type="checkbox" id="check">
+            <div class="fa "></div>
+            <label for="check">Я согласен с <a class="link" href="">условиями и правилами</a></label>
+            </div>
+            <button type="submit" class="button">Регистрация</button>
+    </form>
+</div>

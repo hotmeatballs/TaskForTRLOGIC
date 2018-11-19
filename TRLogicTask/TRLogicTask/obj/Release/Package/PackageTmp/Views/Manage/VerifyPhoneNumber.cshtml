@@ -1,0 +1,19 @@
+﻿@model TRLogicTask.Models.VerifyPhoneNumberViewModel
+
+<div class="form">
+    <h3>Проверка номера телефона.</h3>
+    <form action="/Manage/VerifyPhoneNumber" class="tab-form active" method="post" role="form" novalidate="novalidate">
+        @Html.AntiForgeryToken()
+
+        @Html.Hidden("phoneNumber", @Model.PhoneNumber)
+        <p>Введите проверочный код</p>
+        <div class="place-holder">
+            <input class="input" type="text" id="Code" name="Code" asp-for="Email" required>
+            <label>введите код</label>
+            @Html.ValidationMessageFor(m => m.Code, "")
+        </div>
+        <div>
+            <button type="submit" class="button">отправить</button>
+        </div>
+    </form>
+</div>

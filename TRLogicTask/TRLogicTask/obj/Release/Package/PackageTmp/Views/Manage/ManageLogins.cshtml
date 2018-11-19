@@ -1,0 +1,81 @@
+﻿@model TRLogicTask.Models.ManageLoginsViewModel
+@using Microsoft.Owin.Security
+
+
+<div class="form">
+    <h3>Управление внешними именами входа.</h3>
+    <div class="tab-form active">
+        @{
+            var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+            if (loginProviders.Count() == 0)
+            {
+                <div>
+                    <p>
+                        Внешние службы проверки подлинности не настроены. 
+                    </p>
+                </div>
+            }
+            else
+            {
+                if (Model.CurrentLogins.Count > 0)
+                {
+                    <h4>Зарегистрированные имена входа</h4>
+
+                    foreach (var account in Model.CurrentLogins)
+                    {
+                    <div class="icons1 size">
+                            <div class="services"><i class="fab  fa-@account.LoginProvider.ToLower()"></i></div>
+                    </div>
+
+
+                        if (ViewBag.ShowRemoveButton)
+                        {
+                            <form action="/Manage/RemoveLogin" method="post">
+                                @Html.AntiForgeryToken()
+
+                                <div>
+                                    <input id="loginProvider" name="loginProvider" type="hidden" value="@account.LoginProvider" />
+                                    <input id="providerKey" name="providerKey" type="hidden" value="@account.ProviderKey" />
+                                    <button type="submit" class="button" title="Удалить это имя входа @account.LoginProvider из вашей учетной записи">удалить</button>
+                                </div>
+                            </form>
+
+                        }
+                        else
+                        {
+                           
+                        }
+                    }
+
+                }
+                if (Model.OtherLogins.Count > 0)
+                {   <h4>Выполнить вход с помощью:</h4>
+
+                    <form action="/Manage/LinkLogin" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <ul class="icons">
+
+                            @foreach (AuthenticationDescription p in Model.OtherLogins)
+                            {
+                                <li><button type="submit" name="provider" value="@p.AuthenticationType" title="@p.AuthenticationType" class="services"><i class="fab  fa-@p.AuthenticationType.ToLower()"></i></button></li>
+                            }
+
+                        </ul>
+
+                    </form>
+
+                }
+            }
+        }
+    </div>
+</div>
+
+
+
+
+
+
+                                         
+
+                               

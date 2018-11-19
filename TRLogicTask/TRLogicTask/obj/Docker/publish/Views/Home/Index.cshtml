@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNet.Identity
+@using TRLogicTask.Models
+@model ApplicationUser
+
+<link rel="stylesheet" href="~/Content/styleprofile.css" type="text/css" />
+
+<div class="flex">
+    <div class="profile">
+        <a class="button edit" href="/Manage/Index"><div class="fas" id="cogs">управление</div></a>
+    </div>
+    <div class="info-container">
+        <div class="name">@ViewBag.userUserName </div>
+        <div class="info">Ваш номер телефона: @ViewBag.userPhone</div>
+        <div class="info">Ваш E-mail: @ViewBag.userEmail .</div>
+        <div class="info">Подтвержден по E-mail: @ViewBag.userVerifyEmail .</div>
+        <div class="info">Ваш Id: @ViewBag.userId .</div>
+        <div class="info">Подтвержден по номеру: @ViewBag.userVerify .</div>
+    </div>
+</div>
+
+    
+
+

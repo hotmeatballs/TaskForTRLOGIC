@@ -1,0 +1,66 @@
+﻿@model TRLogicTask.Models.ExternalLoginConfirmationViewModel
+
+
+
+<div class="wrapper">
+<div class="form">
+    @if (ViewBag.LoginProvider != null)
+    {
+    <h3>Соединить аккаунт с @ViewBag.LoginProvider.</h3>}
+    <form action="/Account/ExternalLoginConfirmation" class="tab-form" method="post" role="form">
+        @Html.AntiForgeryToken()
+        <p>
+            Введите имейл и имя чтобы продолжить.
+        </p>
+        <div class="place-holder">
+            <label class="value" for="Email">ваш e-mail</label>
+
+            <input class="input" data-val="true" data-val-required="Требуется поле Адрес электронной почты." id="Email" name="Email" type="text" value="@Model.Email" />
+            @Html.ValidationMessageFor(m => m.Email, "")
+
+        </div>
+        <div class="place-holder">
+            <label class="value" for="UserName">ваш логин</label>
+
+            <input class="input" data-val="true" data-val-required="Трубуеться заполнить имя." id="UserName" name="UserName" type="text" value="@Model.UserName" />
+            @Html.ValidationMessageFor(m => m.UserName, "")
+
+        </div>
+      
+        <div>
+
+            <button type="submit" class="button">Registration</button>
+
+        </div>
+    </form>
+</div>
+</div>
+@*@using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <h4>Форма связи</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <p class="text-info">
+        ВЫ наконецтаки <strong>@ViewBag.LoginProvider</strong>
+        Введите имя пользователя на этом сайте ниже и нажмите кнопку "Зарегистрировать", чтобы завершить
+        вход.
+    </p>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Регистрация" />
+        </div>
+    </div>
+}*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

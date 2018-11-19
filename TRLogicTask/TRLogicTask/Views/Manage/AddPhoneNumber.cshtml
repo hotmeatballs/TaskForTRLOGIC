@@ -1,0 +1,23 @@
+﻿@model TRLogicTask.Models.AddPhoneNumberViewModel
+
+
+
+<div class="form">
+    <h3>Форма добавления телефона.</h3>
+    <form method="post" asp-action="AddPhoneNumber" asp-controller="Manage" asp-antiforgery="true" class="tab-form active">
+        @Html.AntiForgeryToken()
+
+        <div class="place-holder">
+            <input class="input" type="text" id="Email" name="Number" asp-for="Number" required>
+            <label>введите номер тефона</label>
+            @Html.ValidationMessageFor(m => m.Number, "")
+        </div>
+
+        <div>
+            <button type="submit" class="button">Отправить</button>
+        </div>
+
+    </form>
+</div>   
+
+ 

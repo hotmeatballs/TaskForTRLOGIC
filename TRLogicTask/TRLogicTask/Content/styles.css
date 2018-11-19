@@ -1,0 +1,358 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+	background-image: url('images/tekstury-oboi-fon-zelenyy-7686.jpg');
+	-webkit-background-size: cover;
+	background-size: cover;
+
+	
+}
+.wrapper {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	
+
+	
+}
+ /*forms*/
+.form {
+	background-color:rgba(255,255,255,0.2);
+	padding: 10px;
+	width: 360px;
+	text-shadow: 1px 0px grey;
+}
+
+.form .link {
+	text-decoration: none;
+	transition: 0.5s;
+	color: rgba(0,187,63,0.8);
+	
+}
+.form .link:hover{
+	color: green;
+}
+
+.form ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.form input {
+	display: block;
+	width: 98.9%;
+}
+ /*tabs*/
+.tab-form, .tab-form-services {
+   
+    box-shadow: 1px 1px 10px 2px #606a5c;
+    background-color: #fff;
+    padding: 30px;
+}
+
+.tab-form.active {
+    
+    box-shadow: 1px 1px 10px 2px #606a5c;
+}
+.tab-form-services {
+    box-shadow: 1px 7px 10px 2px #606a5c;
+    margin-top:-1px;
+    padding-top:0;
+}
+
+.tab-container{
+	display: flex;
+}
+
+.tab {
+	color: #fff;
+	width: 50%;
+	font-weight: 600;
+	padding:15px;
+	margin: 0 auto;
+	display: inline-flex;
+	margin-bottom: -1px;
+	cursor: pointer;
+    text-decoration:none;
+    font-size:18px;
+    
+
+	
+	
+}
+.tab.active {
+	background-color: #fff;
+	color: green;
+	box-shadow: 1px -3px 4px #606a5c;
+    text-decoration:none;
+    display:block;
+	
+	
+}
+
+
+/*inputs styles*/
+
+.input {
+	font-size: 16px;
+	border: 2px solid #e9eaea;
+	padding: 12px 14px;
+	box-sizing: border-box;
+	margin-bottom: 22px;
+	color: green;
+	outline: 0;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #e9eaea;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #e9eaea;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #e9eaea;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #e9eaea;
+}
+/*buttons+animation*/
+.button {
+	background-color: rgba(0,187,63,0.8);
+	font-size: 18px;
+	text-transform: uppercase;
+	display: block;
+    padding:0;
+    width:100%;
+	text-align: center;
+	line-height: 46px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	color: #fff;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+	border-bottom: 5px solid #65f08a;
+    
+	
+}
+.button:hover{
+	color: #fff;
+}
+.button::before, .button::after{
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transition: 0.4s;
+	z-index: -1;
+	
+}
+
+.button::before{
+	background-color: #22e656;
+	left: -100%;
+}
+
+.button::after{
+	background-color:#65f08a;
+	top: 100%;
+	transition-delay: 0.1s;
+}
+.button:hover::before {
+	left: 0;
+}
+.button:hover::after{
+	top: 0;
+}
+.button:active::after {
+	transition: 0s;
+	box-shadow: 2px 2px 4px inset green;
+}
+ /*icons and links to services*/
+.icons {
+	display: flex;
+	justify-content: space-around;
+	
+	
+}
+.icons .services ,.icons1 .services{
+    width: 30px;
+    height: 30px;
+    display: block;
+    line-height: 30px;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 80%;
+    margin-bottom: 10px;
+    border: none;
+    background-color: rgba(255,255,255,0);
+    padding: 0;
+    color: rgba(0,187,63,0.8);
+    transition:0.3s;
+}
+.icons .services:hover {
+    transform: scale(1.3);
+    color: green;
+}
+.icons + .services {
+	display: block;
+	margin-top: 10px;
+	text-align: center;
+	font-size: 15px;
+    
+}
+.icons1 .services {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+#auth::before, #reg::before, #edit::before,
+#exit::before ,#save::before,#cogs::before{
+    margin-right: 5px;
+}
+
+#auth::before {
+    content: "\f2f6";
+}
+
+#reg::before {
+    content: "\f234"
+}
+
+#edit::before {
+    content: "\f4ff";
+}
+
+#exit::before {
+    content: "\f2f5";
+}
+#save::before{
+    content:"\f0c7";
+}
+#cogs::before{
+    content:"\f085";
+}
+/*placeholders*/
+.place-holder{
+	position: relative;
+	text-shadow: none;
+}
+.place-holder input{
+	border: none;
+	border-bottom: 2px solid #e9eaea;
+	padding: 10px 0;
+}
+.place-holder label{
+	position: absolute;
+	left: 0;
+    top:0;
+	padding-top: 10px;
+	color: rgba( 45, 194, 70, 0.684 );
+	transition: 0.3s;
+	pointer-events: none;
+}
+
+    .place-holder input:focus ~ label,
+    .place-holder input:valid ~ label {
+        top: -20px;
+        opacity:0;
+    }
+.place-holder label.value{
+    top:-20px;
+}
+    
+.condition {
+	margin-top: 15px;
+	font-size: 15px;
+	position: relative;
+}
+label[for='check'], label[for='remember'] {
+    cursor: pointer;
+    padding-left: 35px;
+    width: 280px;
+    display: block;
+    position: relative;
+    top:5px;
+}
+/*checkboxes*/
+ .condition div{
+	content: "";
+	position: absolute;
+	border: 2px solid rgba( 45, 194, 70, 0.684 );
+	width: 20px;
+	height: 20px;
+	top: 0;
+	left: 0;
+	border-radius: 3px;
+	transition: 0.4s;	
+}
+#check:checked + div::before{
+	content: "\f00c";
+	font-size: 17px;
+	line-height: 20px;
+	color: rgba( 45, 194, 70, 0.684 );
+	
+}
+#check{
+	display: none;
+}
+
+
+
+
+#remember:checked + div::before {
+    content: "\f00c";
+    font-size: 17px;
+    line-height: 20px;
+    color: rgba( 45, 194, 70, 0.684 );
+}
+#remember{
+    display:none;
+}
+span{
+    color:green;
+    font-size:12px;
+    margin-bottom:20px;
+}
+h3 {
+    text-align:center;
+    font-size:24px;
+    text-shadow:1px 1px 3px white;
+}
+p {
+    top: 20px;
+    margin-top: 0px;
+    margin-bottom: 30px;
+}
+
+/*signin signup form*/
+ul.sign{
+   
+    position:absolute;
+    top:20px;
+    left:20px;
+}
+.signlink{
+    transition:0.3s;
+   list-style:none;
+   width:150px;
+}
+.signlink:hover{
+    transform:scale(1.1);
+    color:palegreen;
+    
+}
+/*helper styles*/
+.username{
+    text-transform:uppercase;
+}
+.size {
+    height:30px;
+    
+}
+a{
+    text-decoration:none;
+}

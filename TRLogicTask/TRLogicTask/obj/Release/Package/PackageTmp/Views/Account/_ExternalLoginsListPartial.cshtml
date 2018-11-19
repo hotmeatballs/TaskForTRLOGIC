@@ -1,0 +1,19 @@
+﻿@model TRLogicTask.Models.ExternalLoginListViewModel
+@using Microsoft.Owin.Security
+
+@{ var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+
+<form action="/Account/ExternalLogin" method="post" class="tab-form-services active">    
+    @Html.AntiForgeryToken()
+    <div id="socialLoginList">
+        <ul class="icons">
+            @*take providers from collection: we have 4*@ 
+            @foreach (AuthenticationDescription p in loginProviders)
+            {
+                <li><button type="submit" name="provider" value="@p.AuthenticationType" title="@p.AuthenticationType" class="services"><i class="fab  fa-@p.AuthenticationType.ToLower()"></i></button></li>
+            }
+        </ul>
+    </div>
+</form>
+    }
+

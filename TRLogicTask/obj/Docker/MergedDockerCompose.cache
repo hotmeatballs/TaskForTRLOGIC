@@ -1,0 +1,20 @@
+networks:
+  default:
+    external:
+      name: nat
+services:
+  sql-server:
+    environment:
+      ACCEPT_EULA: "Y"
+      NAME: sql-server
+      SA_PASSWORD: DockerCon2017
+    image: microsoft/mssql-server-windows-express
+  trlogictask:
+    build:
+      context: C:\Users\EweioPC\source\repos\TRLogicTask\TRLogicTask
+      dockerfile: Dockerfile
+    image: trlogictask
+    ports:
+    - published: 80
+      target: 80
+version: '3.4'

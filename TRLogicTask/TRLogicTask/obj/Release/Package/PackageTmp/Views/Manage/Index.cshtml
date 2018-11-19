@@ -1,0 +1,43 @@
+﻿@model TRLogicTask.Models.IndexViewModel
+
+
+
+
+<h3>@ViewBag.StatusMessage</h3>
+<div class="form">
+    <h3>Управление аккаунтом.</h3>
+    <div class="tab-form active">
+
+        @if (Model.HasPassword)
+        {
+            <a class="link" href="/Manage/ChangePassword">Изменить пароль.</a>
+        }
+        else
+        {
+            <a class="link" href="/Manage/SetPassword">Создать пароль.</a>
+        }
+
+        <hr />
+        <a class="link" href="/Manage/ManageLogins">Настроить аккаунты для входа.</a>
+        <br />
+        <p>Настроено аккаунтов @Model.Logins.Count. </p>
+        <hr />
+
+        @if (Model.PhoneNumber != null)
+        {
+
+            <a class="link" href="/Manage/AddPhoneNumber">Изменить номер телефона.</a>
+            <p>Ваш номер телефона @Model.PhoneNumber.</p>
+            <form action="/Manage/RemovePhoneNumber" class="form-horizontal" method="post" role="form">
+                @Html.AntiForgeryToken()
+
+                <button type="submit" class="button">удалить номер</button>
+            </form>
+                    }
+         else
+         {
+           <a class="link" href="/Manage/AddPhoneNumber">Добавить номер телефона.</a>
+         }
+
+    </div>
+</div>
